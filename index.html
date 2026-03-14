@@ -82,90 +82,14 @@
 
 <body>
 
-<!-- Floating button -->
-<button id="flutter-launch-btn">Open</button>
-
- Embedded Flutter App
-<div id="flutter-container">
-    <button id="close-btn">×</button>
-
-    <iframe
-            id="flutter-frame">
-    </iframe>
-</div>
+<script 
+  src="https://thejasenapps.github.io/reachx_embed/widget.js" 
+  institution_id="dbSZHoKuHYmszIgTsfCf">
+</script>
 
 
 <!-- Flutter Web Loader -->
 <script src="flutter_bootstrap.js" async></script>
-
-<script>
-
-
-    const launchBtn = document.getElementById("flutter-launch-btn");
-    const container = document.getElementById("flutter-container");
-    const closeBtn = document.getElementById("close-btn");
-    const iframe = document.getElementById("flutter-frame");
-
-
-    let isDragging = false;
-
-    launchBtn.addEventListener("mousedown", () => {
-      isDragging = true;
-    });
-
-    document.addEventListener("mousemove", (e) => {
-
-      if(!isDragging) return;
-
-      launchBtn.style.left = e.clientX - 30 + "px";
-      launchBtn.style.top = e.clientY - 30 + "px";
-      launchBtn.style.bottom = "auto";
-      launchBtn.style.right = "auto";
-
-    });
-
-    document.addEventListener("mouseup", () => {
-      isDragging = false;
-    });
-
-    console.log("Trying to get current path:");
-    const currentPath = window.location.pathname;
-
-    console.log("Current page path:", currentPath);
-
-    if(currentPath !== "/embed_proto/" && currentPath !== "/index.html") {
-        console.log("Not landing page. Hiding embed widget.");
-        launchBtn.style.display = "none";
-        container.style.display = "none";
-    }
-
-    launchBtn.onclick = function(){
-
-      console.log("Open button clicked");
-
-      container.style.display = "block";
-
-      console.log("Container displayed");
-
-      if(!iframe.getAttribute("src")){
-        console.log("src is null/empty. Setting src now...");
-        iframe.src = "https://thejasenapps.github.io/embed_proto2/";
-        console.log("Iframe src set to:", iframe.src);
-      } else {
-        console.log("Iframe already has src:", iframe.src);
-      }
-
-    }
-
-    closeBtn.onclick = function(){
-      container.style.display = "none";
-    }
-
-    iframe.onload = function(){
-      console.log("Iframe finished loading:", iframe.src);
-    }
-
-</script>
 
 </body>
 </html>
